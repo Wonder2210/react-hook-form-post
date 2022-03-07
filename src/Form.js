@@ -5,6 +5,7 @@ import {
   Heading,
   FormLabel,
   FormControl,
+  FormErrorMessage,
   FormHelperText,
   Button,
   RadioGroup,
@@ -30,7 +31,8 @@ const formSchema = yup
       .string()
       .matches(phoneRegExp, "It doesn't seem to be a phone number")
       .length(11),
-    multiple: yup.array().of(yup.string()).ensure()
+    multiple: yup.array().of(yup.string()).ensure().min(1,'Choose at least one'),
+    radio: yup.string(),
   })
   .required();
 
@@ -47,7 +49,7 @@ const UserForm = () => {
     },
   });
   const onSubmit = (data) => console.log(data);
-  const onInvalid = () => alert("iNvalid bro");
+  const onInvalid = () => null;
   React.useEffect(() => {
     console.log(errors);
   }, [errors]);
@@ -68,10 +70,16 @@ const UserForm = () => {
         <Input type="text" {...register("name")} />
         <FormHelperText>Your first name</FormHelperText>
       </FormControl>
-      <FormControl>
+      <FormControl isInvalid={errors?.email}>
         <FormLabel htmlFor="email">Email address</FormLabel>
         <Input type="text" {...register("email")} />
-        <FormHelperText>We'll never share your email.</FormHelperText>
+        {errors?.email ? (
+          <FormErrorMessage>
+            {errors.email.message}
+          </FormErrorMessage>
+        ) : (
+          <FormHelperText>We'll never share your email.</FormHelperText>
+        )}
       </FormControl>
       <FormControl>
         <FormLabel htmlFor="phoneNumber">Phone Number</FormLabel>
@@ -97,10 +105,10 @@ const UserForm = () => {
       <FormControl>
         <FormLabel>Choose many</FormLabel>
         <Stack direction="row">
-          <Checkbox value="1" {...register('multiple')} >
+          <Checkbox value="1" {...register("multiple")}>
             Here
           </Checkbox>
-          <Checkbox value="2" {...register('multiple')} >
+          <Checkbox value="2" {...register("multiple")}>
             Here
           </Checkbox>
         </Stack>
