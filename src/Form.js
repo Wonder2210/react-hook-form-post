@@ -22,7 +22,7 @@ const phoneRegExp =
 
 const formSchema = yup
   .object({
-    name: yup.string().required("Este campo es requerido"),
+    name: yup.string(),
     email: yup
       .string()
       .email("Please introduce a valid email")
@@ -30,8 +30,13 @@ const formSchema = yup
     phoneNumber: yup
       .string()
       .matches(phoneRegExp, "It doesn't seem to be a phone number")
-      .length(11),
-    multiple: yup.array().of(yup.string()).ensure().min(1,'Choose at least one'),
+      .length(11, "Phone number is too short"),
+    multiple: yup
+      .array()
+      .of(yup.string())
+      .ensure()
+      .compact()
+      .min(1, "I bet you like one of those").required(),
     radio: yup.string(),
   })
   .required();
@@ -74,19 +79,21 @@ const UserForm = () => {
         <FormLabel htmlFor="email">Email address</FormLabel>
         <Input type="text" {...register("email")} />
         {errors?.email ? (
-          <FormErrorMessage>
-            {errors.email.message}
-          </FormErrorMessage>
+          <FormErrorMessage>{errors.email.message}</FormErrorMessage>
         ) : (
           <FormHelperText>We'll never share your email.</FormHelperText>
         )}
       </FormControl>
-      <FormControl>
+      <FormControl isInvalid={errors?.phoneNumber}>
         <FormLabel htmlFor="phoneNumber">Phone Number</FormLabel>
         <Input {...register("phoneNumber")} />
-        <FormHelperText>Your daily phone number is fine.</FormHelperText>
+        {errors?.email ? (
+          <FormErrorMessage>{errors.phoneNumber.message}</FormErrorMessage>
+        ) : (
+          <FormHelperText>Your daily phone number is fine.</FormHelperText>
+        )}
       </FormControl>
-      <FormControl>
+      <FormControl isInvalid={errors?.radio}>
         <FormLabel>Choose one</FormLabel>
         <Controller
           name="radio"
@@ -94,24 +101,32 @@ const UserForm = () => {
           render={({ field: { onChange, value } }) => (
             <RadioGroup onChange={onChange} value={value}>
               <Stack direction="row">
-                <Radio value="1">First</Radio>
-                <Radio value="2">Second</Radio>
-                <Radio value="3">Third</Radio>
+                <Radio value="1">Beach🏖️</Radio>
+                <Radio value="2">Mountain 🏔️</Radio>
               </Stack>
             </RadioGroup>
           )}
         />
+          <FormHelperText>Choose your favorite place for vacations</FormHelperText>
       </FormControl>
-      <FormControl>
+      <FormControl isInvalid={errors?.multiple}>
         <FormLabel>Choose many</FormLabel>
         <Stack direction="row">
           <Checkbox value="1" {...register("multiple")}>
-            Here
+          Pizza🍕
           </Checkbox>
           <Checkbox value="2" {...register("multiple")}>
-            Here
+          Hamburger🍔
+          </Checkbox>
+          <Checkbox value="2" {...register("multiple")}>
+          Hot dog🌭
           </Checkbox>
         </Stack>
+        {errors?.multiple ? (
+          <FormErrorMessage>{errors.multiple.message}</FormErrorMessage>
+        ) : (
+          <FormHelperText>Choose your favorites fast food.</FormHelperText>
+        )}
       </FormControl>
 
       <Button
