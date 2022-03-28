@@ -36,12 +36,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This demo is made with the intentenion to work as as a code example for my post
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [React Hook form](https://react-hook-form.com/)
+* [Create react app](https://create-react-app.dev)
+* [Chakra Ui](https://http://chakra-ui.com/)
+* [Yup](https://github.com/jquense/yup)
 
 
 
@@ -59,7 +61,7 @@ This is the code used on the react hook form repo , feel free to clone it , to g
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Wonder2210/react-hook-form-post
    ```
 2. Install NPM packages
    ```sh
@@ -69,22 +71,10 @@ This is the code used on the react hook form repo , feel free to clone it , to g
    ```sh
    yarn start
    ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Wonder gonzalez - [@WonDErV14](https://twitter.com/WonDErV14)
 
 Project Link: [https://github.com/Wonder2210/react-hook-form-post](hhttps://github.com/Wonder2210/react-hook-form-post)
 
@@ -98,7 +88,7 @@ Project Link: [https://github.com/Wonder2210/react-hook-form-post](hhttps://gith
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/Wonder2210/react-hook-form-post/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/othneildrew/Best-README-Template/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
