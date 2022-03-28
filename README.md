@@ -76,7 +76,7 @@ This is the code used on the react hook form repo , feel free to clone it , to g
 
 Wonder gonzalez - [@WonDErV14](https://twitter.com/WonDErV14)
 
-Project Link: [https://github.com/Wonder2210/react-hook-form-post](hhttps://github.com/Wonder2210/react-hook-form-post)
+Project Link: [https://github.com/Wonder2210/react-hook-form-post](https://github.com/Wonder2210/react-hook-form-post)
 
 
 
